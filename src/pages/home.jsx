@@ -9,9 +9,6 @@ import Footer from "../shared/Footer";
 export default function HomePage() {
   return (
     <div className="min-h-screen pt-[8vh] flex flex-col">
-      {/* Navbar */}
-      <Navbar />
-
       {/* Header */}
       <Header />
 
@@ -20,9 +17,6 @@ export default function HomePage() {
 
       {/* Pricing */}
       <Pricing />
-
-      {/* Footer */}
-      <Footer />
     </div>
   );
 }

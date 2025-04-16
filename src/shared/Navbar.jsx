@@ -1,13 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
-import { Menu, X, LogIn, User, Zap } from "lucide-react";
+import { Menu, X, LogIn, User, Zap, LogOut } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../context/userContext";
 
 const Navbar = () => {
   const navigate = useNavigate();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const user = useContext(AuthContext);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,8 +23,12 @@ const Navbar = () => {
     { name: "Features", href: "#features" },
     { name: "Pricing", href: "#pricing" },
     { name: "Documentation", href: "#docs" },
-    { name: "Contact", href: "#contact" },
+    // { name: "Contact", href: "#contact" },
   ];
+
+  const handleLogout = () => {
+    console.log("loggedout");
+  };
 
   return (
     <motion.nav
@@ -32,8 +38,8 @@ const Navbar = () => {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+      <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-wrap items-center justify-between h-16">
           {/* Logo */}
           <motion.div
             whileHover={{ scale: 1.05 }}
@@ -48,46 +54,58 @@ const Navbar = () => {
           </motion.div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-6">
             {navItems.map((item) => (
               <motion.a
                 key={item.name}
                 href={item.href}
-                whileHover={{
-                  y: -2,
-                  color: "#4f46e5",
-                }}
+                whileHover={{ y: -2, color: "#4f46e5" }}
                 className="text-gray-700 font-medium transition-colors">
                 {item.name}
               </motion.a>
             ))}
 
-            <div className="flex items-center space-x-4 ml-6">
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}>
-                <Link
-                  to="/signin"
-                  className="flex items-center space-x-2 px-4 py-2 rounded-lg text-indigo-600 hover:bg-indigo-50 transition-colors">
-                  <LogIn className="w-5 h-5" />
-                  <span>Sign In</span>
-                </Link>
-              </motion.div>
+            <div className="flex items-center space-x-4 ml-4">
+              {!user ? (
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}>
+                  <Link
+                    to="/signin"
+                    className="flex items-center space-x-2 px-4 py-2 rounded-lg text-indigo-600 hover:bg-indigo-50 transition-colors">
+                    <LogIn className="w-5 h-5" />
+                    <span>Sign In</span>
+                  </Link>
+                </motion.div>
+              ) : (
+                <div className="flex items-center gap-4">
+                  <motion.div
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}>
+                    <Link
+                      to="/user/dashboard"
+                      className="flex items-center space-x-2 px-4 py-2 rounded-lg bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-md hover:shadow-lg transition-all">
+                      <User className="w-5 h-5" />
+                      <span>Dashboard</span>
+                    </Link>
+                  </motion.div>
 
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}>
-                <Link
-                  to="/user/dashboard"
-                  className="flex items-center space-x-2 px-4 py-2 rounded-lg bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-md hover:shadow-lg transition-all">
-                  <User className="w-5 h-5" />
-                  <span>Dashboard</span>
-                </Link>
-              </motion.div>
+                  <motion.div
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}>
+                    <button
+                      onClick={handleLogout}
+                      className="flex items-center space-x-2 px-4 py-2 rounded-lg text-indigo-600 hover:bg-indigo-50 transition-colors">
+                      <LogOut className="w-5 h-5" />
+                      <span>Sign out</span>
+                    </button>
+                  </motion.div>
+                </div>
+              )}
             </div>
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile Menu Toggle */}
           <motion.button
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
@@ -111,36 +129,48 @@ const Navbar = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.2 }}
-            className="md:hidden bg-white shadow-xl">
-            <div className="px-2 pt-2 pb-4 space-y-2">
-              {navItems.map((item) => (
-                <motion.a
-                  key={item.name}
-                  href={item.href}
-                  onClick={() => setMobileMenuOpen(false)}
-                  whileTap={{ scale: 0.95 }}
-                  className="block px-3 py-3 rounded-md text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors">
-                  {item.name}
-                </motion.a>
-              ))}
+            className="md:hidden bg-white shadow-xl px-4 py-4 space-y-4">
+            {navItems.map((item) => (
+              <motion.a
+                key={item.name}
+                href={item.href}
+                onClick={() => setMobileMenuOpen(false)}
+                whileTap={{ scale: 0.95 }}
+                className="block w-full text-center px-4 py-3 rounded-md text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors">
+                {item.name}
+              </motion.a>
+            ))}
 
-              <div className="pt-2 space-y-2 border-t border-gray-100">
+            <div className="pt-4 border-t border-gray-200 space-y-2">
+              {!user ? (
                 <Link
                   to="/signin"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="flex items-center space-x-2 px-3 py-3 rounded-md text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors">
+                  className="flex items-center justify-center space-x-2 w-full px-4 py-3 rounded-md text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors">
                   <LogIn className="w-5 h-5" />
                   <span>Sign In</span>
                 </Link>
+              ) : (
+                <>
+                  <button
+                    onClick={() => {
+                      handleLogout();
+                      setMobileMenuOpen(false);
+                    }}
+                    className="flex items-center justify-center space-x-2 w-full px-4 py-3 rounded-md text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors">
+                    <LogOut className="w-5 h-5" />
+                    <span>Sign out</span>
+                  </button>
 
-                <Link
-                  to="/user/dashboard"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="flex items-center space-x-2 px-3 py-3 rounded-md bg-gradient-to-r from-indigo-600 to-purple-600 text-white justify-center">
-                  <User className="w-5 h-5" />
-                  <span>Dashboard</span>
-                </Link>
-              </div>
+                  <Link
+                    to="/user/dashboard"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="flex items-center justify-center space-x-2 w-full px-4 py-3 rounded-md bg-gradient-to-r from-indigo-600 to-purple-600 text-white">
+                    <User className="w-5 h-5" />
+                    <span>Dashboard</span>
+                  </Link>
+                </>
+              )}
             </div>
           </motion.div>
         )}

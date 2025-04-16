@@ -19,8 +19,6 @@ export default function Dashboard() {
 
   return (
     <div className="min-h-screen pt-[8vh] bg-gradient-to-br from-gray-50 to-indigo-50">
-      <Navbar />
-
       <div className="pt-[8vh] pb-[4vh] px-6 py-10">
         <div className="max-w-6xl mx-auto space-y-10">
           {/* Welcome Header */}
@@ -250,8 +248,6 @@ export default function Dashboard() {
           </motion.section>
         </div>
       </div>
-
-      <Footer />
     </div>
   );
 }
