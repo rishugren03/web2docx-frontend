@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "http://localhost:5000/auth/api/auth";
+const BASE_URL = "http://localhost:5000/auth/api";
 
 export const saveFbUser = async (idToken, userInfo) => {
   try {
@@ -23,7 +23,7 @@ export const saveFbUser = async (idToken, userInfo) => {
     };
 
     const response = await axios.post(
-      `${BASE_URL}/firebase-register`,
+      `${BASE_URL}/auth/firebase-register`,
       payload,
       {
         headers: {
@@ -32,6 +32,23 @@ export const saveFbUser = async (idToken, userInfo) => {
       }
     );
 
+    return response.data;
+  } catch (error) {
+    console.error(
+      "Token verification failed:",
+      error.response?.data || error.message
+    );
+    throw error;
+  }
+};
+
+export const getUser = async (idToken) => {
+  try {
+    const response = await axios.get(`${BASE_URL}/user/get-user`, {
+      headers: {
+        Authorization: `Bearer ${idToken}`,
+      },
+    });
     return response.data;
   } catch (error) {
     console.error(

@@ -13,7 +13,7 @@ export const AuthProvider = ({ children }) => {
 
     // Listen for authentication state changes
     const unsubscribe = onAuthStateChanged(auth, (user) => {
-      setUser(user); // Update state with user object or null
+      setUser(user);
     });
 
     // Cleanup the listener when the component unmounts
