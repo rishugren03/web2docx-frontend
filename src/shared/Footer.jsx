@@ -24,19 +24,13 @@ const Footer = () => {
       url: "mailto:support@web2docx.com",
       name: "Email",
     },
-    {
-      icon: <Facebook className="w-5 h-5" />,
-      url: "https://facebook.com/web2docx",
-      name: "Facebook",
-    },
   ];
 
   const footerLinks = [
-    { name: "Terms", url: "#" },
-    { name: "Privacy", url: "#" },
+    { name: "Terms", url: "/terms" },
+    { name: "Privacy", url: "/privacy" },
     { name: "Contact", url: "mailto:support@web2docx.com" },
-    { name: "Documentation", url: "#docs" },
-    { name: "API Status", url: "#status" },
+    { name: "Documentation", url: "http://docs.localhost:3000" },
   ];
 
   return (
