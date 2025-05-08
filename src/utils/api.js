@@ -1,7 +1,7 @@
 import axios from "axios";
 
 // const BASE_URL = "http://localhost:5000/auth/api";
-const BASE_URL = "auth.web2docx.com/auth/api";
+const BASE_URL = "http://auth.web2docx.com/auth/api";
 
 export const saveFbUser = async (idToken, userInfo) => {
   try {
