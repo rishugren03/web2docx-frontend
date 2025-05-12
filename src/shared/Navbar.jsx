@@ -22,7 +22,10 @@ const Navbar = () => {
   const navItems = [
     { name: "Features", href: "#features" },
     { name: "Pricing", href: "#pricing" },
-    { name: "Documentation", href: "#docs" },
+    {
+      name: "Documentation",
+      href: "https://www.npmjs.com/package/@web2docx/web2docx-sdk?activeTab=readme",
+    },
     // { name: "Contact", href: "#contact" },
   ];
 
