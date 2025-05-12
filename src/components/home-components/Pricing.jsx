@@ -22,7 +22,7 @@ const Pricing = () => {
       name: "Pro",
       price: "$29",
       description: "For small businesses and startups",
-      conversions: "Up to 50,000 conversions/month",
+      conversions: "Up to 10,000 conversions/month",
       cta: "Subscribe",
       popular: true,
       features: [
@@ -38,7 +38,7 @@ const Pricing = () => {
       name: "Pro Max",
       price: "$69",
       description: "For teams and enterprises needing unlimited usage",
-      conversions: "Unlimited conversions/month",
+      conversions: "100,000 conversions/month",
       cta: "Subscribe",
       popular: false,
       features: [

@@ -5,6 +5,8 @@ import Header from "../components/home-components/Header";
 import Features from "../components/home-components/Features";
 import Pricing from "../components/home-components/Pricing";
 import Footer from "../shared/Footer";
+import CodeSamples from "../components/home-components/CodeSamples";
+import FaqSection from "../components/home-components/FaqSection";
 
 export default function HomePage() {
   return (
@@ -12,11 +14,17 @@ export default function HomePage() {
       {/* Header */}
       <Header />
 
+      {/* Code samples */}
+      <CodeSamples />
+
       {/* Features section */}
       <Features />
 
       {/* Pricing */}
       <Pricing />
+
+      {/* FAQs */}
+      <FaqSection />
     </div>
   );
 }
