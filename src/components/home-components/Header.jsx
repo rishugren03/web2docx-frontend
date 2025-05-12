@@ -1,8 +1,10 @@
 import React from "react";
 import { RocketIcon, BookOpen } from "lucide-react";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
+  const naviate = useNavigate();
   return (
     <motion.header
       initial={{ opacity: 0 }}
@@ -35,14 +37,23 @@ const Header = () => {
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="bg-indigo-600 text-white px-6 py-3 text-lg rounded-lg hover:bg-indigo-700 transition-all duration-300 shadow-md hover:shadow-indigo-500/20 flex items-center">
+            onClick={() => {
+              naviate("/user/dashboard");
+            }}
+            className="bg-indigo-600 text-white px-6 py-3 text-lg rounded-lg hover:bg-indigo-700 transition-all duration-300 shadow-md hover:shadow-indigo-500/20 flex items-center cursor-pointer">
             Get Started <RocketIcon className="ml-2 w-5 h-5" />
           </motion.button>
 
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="bg-emerald-600 text-white px-6 py-3 text-lg rounded-lg hover:bg-emerald-700 transition-all duration-300 shadow-md hover:shadow-emerald-500/20 flex items-center">
+            onClick={() => {
+              window.open(
+                "https://www.npmjs.com/package/@web2docx/web2docx-sdk?activeTab=readme",
+                "_blank"
+              );
+            }}
+            className="bg-emerald-600 text-white px-6 py-3 text-lg rounded-lg hover:bg-emerald-700 transition-all duration-300 shadow-md hover:shadow-emerald-500/20 flex items-center cursor-pointer">
             See Docs <BookOpen className="ml-2 w-5 h-5" />
           </motion.button>
         </motion.div>
