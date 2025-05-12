@@ -4,6 +4,7 @@ import { Menu, X, LogIn, User, Zap, LogOut } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/userContext";
+import { getAuth, signOut } from "firebase/auth";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -29,8 +30,15 @@ const Navbar = () => {
     // { name: "Contact", href: "#contact" },
   ];
 
-  const handleLogout = () => {
-    console.log("loggedout");
+  const handleLogout = async () => {
+    const auth = getAuth();
+    try {
+      await signOut(auth);
+      console.log("User signed out successfully");
+      // Optional: Redirect or show a toast here
+    } catch (error) {
+      console.error("Error signing out:", error);
+    }
   };
 
   return (

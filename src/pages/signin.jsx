@@ -14,6 +14,7 @@ export default function SignInPage() {
     const timeout = setTimeout(() => {
       if (user) {
         navigate("/user/dashboard");
+        location.reload();
       } else {
         setIsChecking(false);
       }
