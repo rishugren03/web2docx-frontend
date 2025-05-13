@@ -66,15 +66,21 @@ const Navbar = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-6">
-            {navItems.map((item) => (
-              <motion.a
-                key={item.name}
-                href={item.href}
-                whileHover={{ y: -2, color: "#4f46e5" }}
-                className="text-gray-700 font-medium transition-colors">
-                {item.name}
-              </motion.a>
-            ))}
+            {navItems.map((item) => {
+              const isExternal = item.name === "Documentation";
+
+              return (
+                <motion.a
+                  key={item.name}
+                  href={item.href}
+                  whileHover={{ y: -2, color: "#4f46e5" }}
+                  className="text-gray-700 font-medium transition-colors"
+                  target={isExternal ? "_blank" : undefined}
+                  rel={isExternal ? "noopener noreferrer" : undefined}>
+                  {item.name}
+                </motion.a>
+              );
+            })}
 
             <div className="flex items-center space-x-4 ml-4">
               {!user ? (

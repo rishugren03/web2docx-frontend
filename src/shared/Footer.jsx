@@ -42,16 +42,27 @@ const Footer = () => {
     ],
   };
 
+  // Helper to determine if link is external
+  const isExternal = (url) =>
+    url.startsWith("http") || url.startsWith("mailto:");
+
   return (
-    <footer
-      id="contact"
-      className="bg-gradient-to-b from-gray-900 to-gray-800 text-gray-400 py-12 px-6">
+    <footer className="bg-gradient-to-b from-gray-900 to-gray-800 text-gray-400 py-12 px-6">
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 mb-12">
+          {/* Branding + Socials */}
           <div className="space-y-4">
             <h3 className="text-white text-lg font-semibold">Web2Docx</h3>
             <p className="text-sm">
               API-first document conversion service for developers and teams.
+            </p>
+            <p className="text-sm">
+              Contact us at:{" "}
+              <a
+                href="mailto:hello@web2docx.com"
+                className="text-grey-400 hover:underline">
+                hello@web2docx.com
+              </a>
             </p>
             <div className="flex space-x-4">
               {socialLinks.map((social, index) => (
@@ -69,14 +80,19 @@ const Footer = () => {
             </div>
           </div>
 
-          <div className="space-y-4">
-            <h3 className="text-white text-lg font-semibold">Legal</h3>
+          {/* Legal */}
+          <div>
+            <h4 className="text-white text-lg font-semibold mb-3">Legal</h4>
             <ul className="space-y-2">
               {footerLinks.legal.map((link, index) => (
                 <motion.li key={index} whileHover={{ x: 5 }}>
                   <a
                     href={link.url}
-                    className="hover:text-white transition-colors">
+                    target={isExternal(link.url) ? "_blank" : undefined}
+                    rel={
+                      isExternal(link.url) ? "noopener noreferrer" : undefined
+                    }
+                    className="hover:text-white transition-colors text-sm">
                     {link.name}
                   </a>
                 </motion.li>
@@ -84,14 +100,19 @@ const Footer = () => {
             </ul>
           </div>
 
-          <div className="space-y-4">
-            <h3 className="text-white text-lg font-semibold">Support</h3>
+          {/* Support */}
+          <div>
+            <h4 className="text-white text-lg font-semibold mb-3">Support</h4>
             <ul className="space-y-2">
               {footerLinks.support.map((link, index) => (
                 <motion.li key={index} whileHover={{ x: 5 }}>
                   <a
                     href={link.url}
-                    className="hover:text-white transition-colors">
+                    target={isExternal(link.url) ? "_blank" : undefined}
+                    rel={
+                      isExternal(link.url) ? "noopener noreferrer" : undefined
+                    }
+                    className="hover:text-white transition-colors text-sm">
                     {link.name}
                   </a>
                 </motion.li>
@@ -100,15 +121,17 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-sm mb-4 md:mb-0">
+        <div className="border-t border-gray-800 pt-6 flex flex-col md:flex-row justify-between items-center">
+          <p className="text-sm text-center md:text-left mb-4 md:mb-0">
             &copy; {new Date().getFullYear()} Web2Docx. All rights reserved.
           </p>
-          <div className="flex space-x-6">
+          <div className="flex flex-wrap justify-center md:justify-end space-x-6">
             {footerLinks.misc.map((link, index) => (
               <motion.a
                 key={index}
                 href={link.url}
+                target="_blank"
+                rel="noopener noreferrer"
                 whileHover={{ color: "#ffffff" }}
                 className="text-sm hover:text-white transition-colors">
                 {link.name}
