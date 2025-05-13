@@ -17,7 +17,7 @@ const Header = () => {
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.2 }}
           className="text-5xl font-bold text-gray-900 mb-6">
-          Convert HTML to PDF, Images & More — Instantly.
+          Convert HTML to PDF, Images, Docx & More — Instantly.
         </motion.h1>
 
         <motion.p

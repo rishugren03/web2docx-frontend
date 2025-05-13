@@ -8,7 +8,7 @@ const Pricing = () => {
       name: "Free",
       price: "$0",
       description: "Best for students, hobbyists, and light usage",
-      conversions: "100 conversions/month",
+      conversions: "50 conversions/month",
       cta: "Get Started",
       popular: false,
       features: [
@@ -43,9 +43,9 @@ const Pricing = () => {
       popular: false,
       features: [
         "All Pro features",
-        "Unlimited usage limits",
         "Priority support (12hr response)",
         "Batch Processing",
+        "Html to Docx Conversion",
         "Priority feature requests",
       ],
       suitableFor: ["Agencies", "Large Startups", "Enterprises"],

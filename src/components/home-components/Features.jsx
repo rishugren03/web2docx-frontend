@@ -31,14 +31,17 @@ const Features = () => {
     },
     {
       icon: <Code className="w-6 h-6" />,
-      title: "API Access",
+      title: "HTML to Docx",
       description:
-        "Fast, secure API to integrate document conversion into your app.",
+        "Convert HTML content into Docx format with rich styling and structure.",
       subFeatures: [
-        { icon: <Zap className="w-4 h-4" />, text: "99.9% uptime" },
         {
           icon: <Server className="w-4 h-4" />,
-          text: "Scalable infrastructure",
+          text: "High-quality Docx output",
+        },
+        {
+          icon: <Code className="w-4 h-4" />,
+          text: "Supports inline HTML styling",
         },
       ],
     },

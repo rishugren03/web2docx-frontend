@@ -136,7 +136,8 @@ const CodeSamples = () => {
             </span>
           </h2>
           <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto">
-            Super easy integration with our SDK.
+            Super easy integration with our SDK, featuring 99.9% uptime,
+            blazing-fast API responses, and seamless scaling for any workload.
           </p>
         </motion.div>
 
