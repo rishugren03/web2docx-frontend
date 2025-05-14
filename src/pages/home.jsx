@@ -8,6 +8,7 @@ import Footer from "../shared/Footer";
 import CodeSamples from "../components/home-components/CodeSamples";
 import FaqSection from "../components/home-components/FaqSection";
 import EarlyAccessModal from "../components/home-components/EarlyAcessModal";
+import ProductHuntEmbed from "../components/productHunt";
 
 export default function HomePage() {
   return (
@@ -20,6 +21,9 @@ export default function HomePage() {
 
       {/* Code samples */}
       <CodeSamples />
+
+      {/* Product Hunt */}
+      <ProductHuntEmbed />
 
       {/* Features section */}
       <Features />
