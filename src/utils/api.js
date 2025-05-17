@@ -59,3 +59,24 @@ export const getUser = async (idToken) => {
     throw error;
   }
 };
+
+export const generateNewApiKey = async (idToken) => {
+  try {
+    const response = await axios.post(
+      `${BASE_URL}/user/create-new-key`,
+      {},
+      {
+        headers: {
+          Authorization: `Bearer ${idToken}`,
+        },
+      }
+    );
+    return response.data;
+  } catch (error) {
+    console.error(
+      "Token verification failed:",
+      error.response?.data || error.message
+    );
+    throw error;
+  }
+};

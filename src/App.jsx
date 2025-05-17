@@ -11,16 +11,17 @@ import PrivacyPolicy from "./pages/privacy_page";
 import TermsOfService from "./pages/terms";
 import ProtectedRoute from "./components/ProtectedRoute";
 import RefundPolicy from "./pages/refund";
+import Blogs from "./pages/blogs";
 
 const App = () => {
   return (
     <>
       <Navbar />
       <a
-        href="https://docs.google.com/forms/d/e/1FAIpQLSfHY0g6tq2GD5X4eiOi7UYXJI0pqKX6O0XBKcG4TQbdPLkhmQ/viewform?usp=dialog"
+        href="https://www.producthunt.com/products/web2docx/reviews/new"
         target="_blank"
         className="fixed bottom-6 right-6 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-full shadow-md text-sm z-40">
-        💬 Feedback
+        💬 Share Feedback
       </a>
       <Routes>
         <Route path="/" element={<HomePage />} />
@@ -37,6 +38,7 @@ const App = () => {
         <Route path="/privacy" element={<PrivacyPolicy />} />
         <Route path="/terms" element={<TermsOfService />} />
         <Route path="/refund-policy" element={<RefundPolicy />} />
+        <Route path="/blogs" element={<Blogs />} />
       </Routes>
       <Footer />
     </>

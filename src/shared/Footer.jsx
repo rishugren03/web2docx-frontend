@@ -39,6 +39,10 @@ const Footer = () => {
         name: "Documentation",
         url: "https://www.npmjs.com/package/@web2docx/web2docx-sdk?activeTab=readme",
       },
+      {
+        name: "Blogs",
+        url: "http://localhost:5173/blogs",
+      },
     ],
   };
 

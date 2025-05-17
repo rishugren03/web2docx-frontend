@@ -9,12 +9,14 @@ import {
   EyeOff,
   Copy,
 } from "lucide-react";
-import Navbar from "../shared/Navbar";
-import Footer from "../shared/Footer";
 import { motion } from "framer-motion";
 import { useUserData } from "../context/userDataContext";
 import Loading from "../components/loading";
 import ErrorMessage from "../components/Error";
+import { getIdToken } from "firebase/auth";
+import { auth } from "../../config/firebase";
+import { toast, ToastContainer } from "react-toastify";
+import { generateNewApiKey } from "../utils/api";
 
 export default function Dashboard() {
   const [isRotating, setIsRotating] = useState(false);
@@ -33,11 +35,25 @@ export default function Dashboard() {
   );
   const remainingPercentage = 100 - usedPercentage;
 
-  const generateNewKey = () => {
+  const generateNewKey = async () => {
     setIsRotating(true);
     setTimeout(() => {
       setIsRotating(false);
     }, 800);
+
+    try {
+      const currentUser = auth.currentUser;
+      if (!currentUser) {
+        toast.error("User not authenticated");
+        return;
+      }
+      const idToken = await getIdToken(currentUser, true);
+      await generateNewApiKey(idToken);
+      window.location.reload();
+    } catch (error) {
+      console.error("Error generating new API key:", error.message);
+      toast.error("Failed to generate a new key");
+    }
   };
 
   const copyToClipboard = () => {
@@ -242,6 +258,14 @@ export default function Dashboard() {
                   boxShadow: "0 10px 25px -5px rgba(99, 102, 241, 0.4)",
                 }}
                 whileTap={{ scale: 0.98 }}
+                onClick={() => {
+                  window.open(
+                    // "http://localhost:5173/#pricing",
+                    "https://web2docx.com/#pricing",
+                    "_blank",
+                    "noopener"
+                  );
+                }}
                 className="px-8 py-3 bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-xl hover:shadow-lg transition-all duration-300 font-medium flex items-center gap-2 mx-auto">
                 <Infinity className="w-5 h-5" />
                 Upgrade to Pro Plan
@@ -309,6 +333,7 @@ export default function Dashboard() {
           </motion.section>
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 }

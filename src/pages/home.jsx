@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { RocketIcon, MenuIcon, XIcon, BookOpen } from "lucide-react";
 import Navbar from "../shared/Navbar";
 import Header from "../components/home-components/Header";
@@ -11,28 +11,52 @@ import EarlyAccessModal from "../components/home-components/EarlyAcessModal";
 import ProductHuntEmbed from "../components/productHunt";
 
 export default function HomePage() {
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (hash) {
+      setTimeout(() => {
+        const el = document.querySelector(hash);
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 100); // 100ms delay to ensure components are rendered
+    }
+  }, []);
+
   return (
     <div className="min-h-screen pt-[8vh] flex flex-col">
       {/* Header */}
-      <Header />
+      <section id="header">
+        <Header />
+      </section>
 
       {/* Early access modal */}
       <EarlyAccessModal />
 
       {/* Code samples */}
-      <CodeSamples />
+      <section id="code-samples">
+        <CodeSamples />
+      </section>
 
       {/* Product Hunt */}
-      <ProductHuntEmbed />
+      <section id="product-hunt">
+        <ProductHuntEmbed />
+      </section>
 
       {/* Features section */}
-      <Features />
+      <section id="features">
+        <Features />
+      </section>
 
       {/* Pricing */}
-      <Pricing />
+      <section id="pricing">
+        <Pricing />
+      </section>
 
       {/* FAQs */}
-      <FaqSection />
+      <section id="faqs">
+        <FaqSection />
+      </section>
     </div>
   );
 }

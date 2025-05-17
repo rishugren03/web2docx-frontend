@@ -1,14 +1,21 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import { Check, Zap, Star, Infinity as Unlimited } from "lucide-react";
 import { motion } from "framer-motion";
+import { AuthContext } from "../../context/userContext";
+import { useNavigate } from "react-router-dom";
 
 const Pricing = () => {
+  const user = useContext(AuthContext);
+
+  console.log("user: ", user);
+  const navigate = useNavigate();
+
   const plans = [
     {
       name: "Free",
       price: "$0",
       description: "Best for students, hobbyists, and light usage",
-      conversions: "50 conversions/month",
+      conversions: "50 free conversions",
       cta: "Get Started",
       popular: false,
       features: [
@@ -21,6 +28,7 @@ const Pricing = () => {
     {
       name: "Pro",
       price: "$29",
+      priceId: "pri_01jv23vxf0s2k188r288c6sfb9",
       description: "For small businesses and startups",
       conversions: "Up to 10,000 conversions/month",
       cta: "Subscribe",
@@ -37,6 +45,7 @@ const Pricing = () => {
     {
       name: "Pro Max",
       price: "$69",
+      priceId: "pri_01jv241sew7he6zn97bw3y3w96",
       description: "For teams and enterprises needing unlimited usage",
       conversions: "100,000 conversions/month",
       cta: "Subscribe",
@@ -51,6 +60,45 @@ const Pricing = () => {
       suitableFor: ["Agencies", "Large Startups", "Enterprises"],
     },
   ];
+
+  const handlePayment = (priceId) => {
+    if (!user) {
+      navigate("/signin");
+    }
+    if (window.Paddle) {
+      Paddle.Checkout.open({
+        items: [
+          {
+            priceId: priceId,
+            quantity: 1,
+          },
+        ],
+        customer: {
+          email: user.email,
+        },
+        customData: {
+          email: user.email,
+          localId: user.uid,
+        },
+      });
+    }
+  };
+
+  useEffect(() => {
+    if (window.Paddle) {
+      Paddle.Environment.set("sandbox");
+      Paddle.Initialize({
+        token: import.meta.env.PADDLE_CLIENT_ID_TOKEN,
+        eventCallback: function (event) {
+          console.log(event);
+          if (event.name === "checkout.completed") {
+            navigate("/user/dashboard");
+            window.location.reload();
+          }
+        },
+      });
+    }
+  }, []);
 
   return (
     <section
@@ -139,6 +187,9 @@ const Pricing = () => {
                 <motion.button
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
+                  onClick={() => {
+                    handlePayment(plan.priceId);
+                  }}
                   className={`w-full py-3 px-6 rounded-lg font-medium transition-all mt-auto ${
                     plan.popular
                       ? "bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-lg hover:shadow-indigo-500/30"
