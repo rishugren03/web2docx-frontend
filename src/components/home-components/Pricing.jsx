@@ -27,7 +27,8 @@ const Pricing = () => {
     {
       name: "Pro",
       price: "$29",
-      priceId: "pri_01jv23vxf0s2k188r288c6sfb9",
+      // priceId: "pri_01jv23vxf0s2k188r288c6sfb9",
+      priceId: "pri_01jv8g6mbwy6f6p2gws521yd1r",
       description: "For small businesses and startups",
       conversions: "Up to 10,000 conversions/month",
       cta: "Subscribe",
@@ -44,7 +45,8 @@ const Pricing = () => {
     {
       name: "Pro Max",
       price: "$69",
-      priceId: "pri_01jv241sew7he6zn97bw3y3w96",
+      // priceId: "pri_01jv241sew7he6zn97bw3y3w96",
+      priceId: "pri_01jv8g6mbwy6f6p2gws521yd1r",
       description: "For teams and enterprises needing unlimited usage",
       conversions: "100,000 conversions/month",
       cta: "Subscribe",
@@ -60,44 +62,45 @@ const Pricing = () => {
     },
   ];
 
-  // const handlePayment = (priceId) => {
-  //   if (!user) {
-  //     navigate("/signin");
-  //   }
-  //   if (window.Paddle) {
-  //     Paddle.Checkout.open({
-  //       items: [
-  //         {
-  //           priceId: priceId,
-  //           quantity: 1,
-  //         },
-  //       ],
-  //       customer: {
-  //         email: user.email,
-  //       },
-  //       customData: {
-  //         email: user.email,
-  //         localId: user.uid,
-  //       },
-  //     });
-  //   }
-  // };
+  const handlePayment = (priceId) => {
+    if (!user) {
+      navigate("/signin");
+    }
+    if (window.Paddle) {
+      Paddle.Checkout.open({
+        items: [
+          {
+            priceId: priceId,
+            quantity: 1,
+          },
+        ],
+        customer: {
+          email: user.email,
+        },
+        customData: {
+          email: user.email,
+          localId: user.uid,
+        },
+      });
+    }
+  };
 
-  // useEffect(() => {
-  //   if (window.Paddle) {
-  //     // Paddle.Environment.set("sandbox");
-  //     Paddle.Initialize({
-  //       token: import.meta.env.VITE_PADDLE_CLIENT_ID_TOKEN,
-  //       eventCallback: function (event) {
-  //         console.log(event);
-  //         if (event.name === "checkout.completed") {
-  //           navigate("/user/dashboard");
-  //           window.location.reload();
-  //         }
-  //       },
-  //     });
-  //   }
-  // }, []);
+  useEffect(() => {
+    if (window.Paddle) {
+      Paddle.Environment.set("sandbox");
+      Paddle.Initialize({
+        // token: import.meta.env.VITE_PADDLE_CLIENT_ID_TOKEN,
+        token: "test_e0e635838fad18b752415cd8101",
+        eventCallback: function (event) {
+          console.log(event);
+          if (event.name === "checkout.completed") {
+            navigate("/user/dashboard");
+            window.location.reload();
+          }
+        },
+      });
+    }
+  }, []);
 
   return (
     <section
