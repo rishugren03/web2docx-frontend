@@ -41,7 +41,7 @@ const Footer = () => {
       },
       {
         name: "Blogs",
-        url: "http://localhost:5173/blogs",
+        url: "https://web2docx.com/blogs",
       },
     ],
   };
