@@ -13,6 +13,8 @@ async function htmlToPdfExample() {
   const html = "<h1>Hello World</h1>";
   const pdfBuffer = await client.htmlToPdf(html);
   require("fs").writeFileSync("output.pdf", pdfBuffer);
+
+  htmlToPdfExample(); 
 }`,
   "HTML Batch to PDF (ZIP)": `const { Web2DocxClient } = require("@web2docx/web2docx-sdk");
 
@@ -22,6 +24,8 @@ async function htmlBatchToPdfExample() {
   const htmlList = ["<h1>First</h1>", "<h1>Second</h1>"];
   const zipBuffer = await client.htmlBatchToPdf(htmlList);
   require("fs").writeFileSync("batch-output.zip", zipBuffer);
+
+  htmlBatchToPdfExample();
 }`,
   "HTML to Image": `const { Web2DocxClient } = require("@web2docx/web2docx-sdk");
 
@@ -31,6 +35,8 @@ async function htmlToImageExample() {
   const html = "<h1>Hello Image</h1>";
   const imageBuffer = await client.htmlToImage(html);
   require("fs").writeFileSync("output.png", imageBuffer);
+
+  htmlToImageExample();
 }`,
   "HTML Batch to Image (ZIP)": `const { Web2DocxClient } = require("@web2docx/web2docx-sdk");
 
@@ -40,6 +46,8 @@ async function htmlBatchToImageExample() {
   const htmlList = ["<h1>First</h1>", "<h1>Second</h1>"];
   const zipBuffer = await client.htmlBatchToImage(htmlList);
   require("fs").writeFileSync("batch-output.zip", zipBuffer);
+
+  htmlBatchToImageExample()
 }`,
   "HTML to Docx": `const { Web2DocxClient } = require("@web2docx/web2docx-sdk");
 
@@ -49,6 +57,8 @@ async function htmlToDocxExample() {
   const html = "<h1>Hello Docx</h1>";
   const docxBuffer = await client.htmlToDocx(html);
   require("fs").writeFileSync("output.docx", docxBuffer);
+
+  htmlToDocxExample();
 }`,
   "HTML Batch to Docx (ZIP)": `const { Web2DocxClient } = require("@web2docx/web2docx-sdk");
 
@@ -58,6 +68,8 @@ async function htmlBatchToDocxExample() {
   const htmlList = ["<h1>First</h1>", "<h1>Second</h1>"];
   const zipBuffer = await client.htmlBatchToDocx(htmlList);
   require("fs").writeFileSync("batch-output.zip", zipBuffer);
+
+  htmlBatchToDocxExample()
 }`,
 };
 
