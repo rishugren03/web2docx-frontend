@@ -7,7 +7,6 @@ import { useNavigate } from "react-router-dom";
 const Pricing = () => {
   const user = useContext(AuthContext);
 
-  console.log("user: ", user);
   const navigate = useNavigate();
 
   const plans = [
@@ -61,44 +60,44 @@ const Pricing = () => {
     },
   ];
 
-  const handlePayment = (priceId) => {
-    if (!user) {
-      navigate("/signin");
-    }
-    if (window.Paddle) {
-      Paddle.Checkout.open({
-        items: [
-          {
-            priceId: priceId,
-            quantity: 1,
-          },
-        ],
-        customer: {
-          email: user.email,
-        },
-        customData: {
-          email: user.email,
-          localId: user.uid,
-        },
-      });
-    }
-  };
+  // const handlePayment = (priceId) => {
+  //   if (!user) {
+  //     navigate("/signin");
+  //   }
+  //   if (window.Paddle) {
+  //     Paddle.Checkout.open({
+  //       items: [
+  //         {
+  //           priceId: priceId,
+  //           quantity: 1,
+  //         },
+  //       ],
+  //       customer: {
+  //         email: user.email,
+  //       },
+  //       customData: {
+  //         email: user.email,
+  //         localId: user.uid,
+  //       },
+  //     });
+  //   }
+  // };
 
-  useEffect(() => {
-    if (window.Paddle) {
-      // Paddle.Environment.set("sandbox");
-      Paddle.Initialize({
-        token: import.meta.env.VITE_PADDLE_CLIENT_ID_TOKEN,
-        eventCallback: function (event) {
-          console.log(event);
-          if (event.name === "checkout.completed") {
-            navigate("/user/dashboard");
-            window.location.reload();
-          }
-        },
-      });
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (window.Paddle) {
+  //     // Paddle.Environment.set("sandbox");
+  //     Paddle.Initialize({
+  //       token: import.meta.env.VITE_PADDLE_CLIENT_ID_TOKEN,
+  //       eventCallback: function (event) {
+  //         console.log(event);
+  //         if (event.name === "checkout.completed") {
+  //           navigate("/user/dashboard");
+  //           window.location.reload();
+  //         }
+  //       },
+  //     });
+  //   }
+  // }, []);
 
   return (
     <section
@@ -187,9 +186,9 @@ const Pricing = () => {
                 <motion.button
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  onClick={() => {
-                    handlePayment(plan.priceId);
-                  }}
+                  // onClick={() => {
+                  //   handlePayment(plan.priceId);
+                  // }}
                   className={`w-full py-3 px-6 rounded-lg font-medium transition-all mt-auto ${
                     plan.popular
                       ? "bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-lg hover:shadow-indigo-500/30"
