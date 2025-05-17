@@ -189,9 +189,9 @@ const Pricing = () => {
                 <motion.button
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  // onClick={() => {
-                  //   handlePayment(plan.priceId);
-                  // }}
+                  onClick={() => {
+                    handlePayment(plan.priceId);
+                  }}
                   className={`w-full py-3 px-6 rounded-lg font-medium transition-all mt-auto ${
                     plan.popular
                       ? "bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-lg hover:shadow-indigo-500/30"
