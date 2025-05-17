@@ -88,7 +88,7 @@ const Pricing = () => {
     if (window.Paddle) {
       Paddle.Environment.set("sandbox");
       Paddle.Initialize({
-        token: import.meta.env.PADDLE_CLIENT_ID_TOKEN,
+        token: import.meta.env.VITE_PADDLE_CLIENT_ID_TOKEN,
         eventCallback: function (event) {
           console.log(event);
           if (event.name === "checkout.completed") {
