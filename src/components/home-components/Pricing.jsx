@@ -87,7 +87,7 @@ const Pricing = () => {
 
   useEffect(() => {
     if (window.Paddle) {
-      Paddle.Environment.set("sandbox");
+      // Paddle.Environment.set("sandbox");
       Paddle.Initialize({
         token: import.meta.env.VITE_PADDLE_CLIENT_ID_TOKEN,
         token: "test_e0e635838fad18b752415cd8101", //test
