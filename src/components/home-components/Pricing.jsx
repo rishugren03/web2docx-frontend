@@ -90,7 +90,7 @@ const Pricing = () => {
       // Paddle.Environment.set("sandbox");
       Paddle.Initialize({
         token: import.meta.env.VITE_PADDLE_CLIENT_ID_TOKEN,
-        token: "test_e0e635838fad18b752415cd8101", //test
+        // token: "test_e0e635838fad18b752415cd8101", //test
         eventCallback: function (event) {
           console.log(event);
           if (event.name === "checkout.completed") {
