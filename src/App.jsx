@@ -14,6 +14,15 @@ import RefundPolicy from "./pages/refund";
 import Blogs from "./pages/blogs";
 
 const App = () => {
+  useEffect(() => {
+    if (window.Paddle) {
+      window.Paddle.on("checkout.completed", () => {
+        navigate("/user/dashboard");
+        window.location.reload();
+      });
+    }
+  }, []);
+
   return (
     <>
       <Navbar />
