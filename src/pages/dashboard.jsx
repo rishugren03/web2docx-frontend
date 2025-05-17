@@ -251,29 +251,31 @@ export default function Dashboard() {
               </motion.div>
             </div>
 
-            <div className="pt-4 text-center">
-              <motion.button
-                whileHover={{
-                  scale: 1.02,
-                  boxShadow: "0 10px 25px -5px rgba(99, 102, 241, 0.4)",
-                }}
-                whileTap={{ scale: 0.98 }}
-                onClick={() => {
-                  window.open(
-                    // "http://localhost:5173/#pricing",
-                    "https://web2docx.com/#pricing",
-                    "_blank",
-                    "noopener"
-                  );
-                }}
-                className="px-8 py-3 bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-xl hover:shadow-lg transition-all duration-300 font-medium flex items-center gap-2 mx-auto">
-                <Infinity className="w-5 h-5" />
-                Upgrade to Pro Plan
-              </motion.button>
-              <p className="text-gray-500 text-sm mt-3">
-                Need higher limits? Custom enterprise plans available.
-              </p>
-            </div>
+            {userData.plan === "free" && (
+              <div className="pt-4 text-center">
+                <motion.button
+                  whileHover={{
+                    scale: 1.02,
+                    boxShadow: "0 10px 25px -5px rgba(99, 102, 241, 0.4)",
+                  }}
+                  whileTap={{ scale: 0.98 }}
+                  onClick={() => {
+                    window.open(
+                      // "http://localhost:5173/#pricing",
+                      "https://web2docx.com/#pricing",
+                      "_blank",
+                      "noopener"
+                    );
+                  }}
+                  className="px-8 py-3 bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-xl hover:shadow-lg transition-all duration-300 font-medium flex items-center gap-2 mx-auto">
+                  <Infinity className="w-5 h-5" />
+                  Upgrade to Pro Plan
+                </motion.button>
+                <p className="text-gray-500 text-sm mt-3">
+                  Need higher limits? Custom enterprise plans available.
+                </p>
+              </div>
+            )}
           </motion.section>
 
           {/* Additional Stats Section */}
