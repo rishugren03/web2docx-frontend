@@ -64,11 +64,9 @@ const Pricing = () => {
   const handlePayment = (priceId) => {
     if (!user) {
       navigate("/signin");
-      return; // make sure to stop here if no user
     }
-
     if (window.Paddle) {
-      window.Paddle.Checkout.open({
+      Paddle.Checkout.open({
         items: [
           {
             priceId: priceId,
@@ -83,26 +81,24 @@ const Pricing = () => {
           localId: user.uid,
         },
       });
-    } else {
-      console.error("Paddle is not loaded yet.");
     }
   };
 
-  // useEffect(() => {
-  //   if (window.Paddle) {
-  //     // Paddle.Environment.set("sandbox");
-  //     Paddle.Initialize({
-  //       token: import.meta.env.VITE_PADDLE_CLIENT_ID_TOKEN,
-  //       eventCallback: function (event) {
-  //         console.log(event);
-  //         if (event.name === "checkout.completed") {
-  //           navigate("/user/dashboard");
-  //           window.location.reload();
-  //         }
-  //       },
-  //     });
-  //   }
-  // }, []);
+  useEffect(() => {
+    if (window.Paddle) {
+      // Paddle.Environment.set("sandbox");
+      Paddle.Initialize({
+        token: import.meta.env.VITE_PADDLE_CLIENT_ID_TOKEN,
+        eventCallback: function (event) {
+          console.log(event);
+          if (event.name === "checkout.completed") {
+            navigate("/user/dashboard");
+            window.location.reload();
+          }
+        },
+      });
+    }
+  }, []);
 
   return (
     <section
