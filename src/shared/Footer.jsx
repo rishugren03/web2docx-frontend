@@ -58,7 +58,8 @@ const Footer = () => {
           <div className="space-y-4">
             <h3 className="text-white text-lg font-semibold">Web2Docx</h3>
             <p className="text-sm">
-              API-first document conversion service for developers and teams.
+              An SDK-first document conversion service built for developers and
+              modern teams.
             </p>
             <p className="text-sm">
               Contact us at:{" "}
