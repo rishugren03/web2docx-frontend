@@ -8,8 +8,10 @@ import {
   Mail,
   RefreshCw,
 } from "lucide-react";
+import useDocumentTitle from "../hooks/useDocumentTitle";
 
 const TermsOfService = () => {
+  useDocumentTitle("Terms  - Web2Docx");
   const sections = [
     {
       icon: <BookOpen className="w-6 h-6 text-indigo-600" />,

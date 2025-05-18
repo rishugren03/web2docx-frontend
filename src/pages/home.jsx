@@ -9,8 +9,10 @@ import CodeSamples from "../components/home-components/CodeSamples";
 import FaqSection from "../components/home-components/FaqSection";
 import EarlyAccessModal from "../components/home-components/EarlyAcessModal";
 import ProductHuntEmbed from "../components/productHunt";
+import useDocumentTitle from "../hooks/useDocumentTitle";
 
 export default function HomePage() {
+  useDocumentTitle("Web2Docx");
   useEffect(() => {
     const hash = window.location.hash;
     if (hash) {

@@ -1,7 +1,9 @@
 import React from "react";
 import { Shield, Lock, Mail, FileText, RefreshCw, Globe } from "lucide-react";
+import useDocumentTitle from "../hooks/useDocumentTitle";
 
 const PrivacyPolicy = () => {
+  useDocumentTitle("Privacy Policy - Web2Docx");
   const sections = [
     {
       icon: <FileText className="w-6 h-6 text-indigo-600" />,

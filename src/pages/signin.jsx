@@ -4,8 +4,10 @@ import { useNavigate } from "react-router-dom";
 import Loading from "../components/loading";
 import EmailPass from "../components/signin-components/Email-Pass";
 import SocialLogins from "../components/signin-components/SocialLogins";
+import useDocumentTitle from "../hooks/useDocumentTitle";
 
 export default function SignInPage() {
+  useDocumentTitle("Sign In - Web2Docx");
   const user = useContext(AuthContext);
   const navigate = useNavigate();
   const [isChecking, setIsChecking] = useState(true);

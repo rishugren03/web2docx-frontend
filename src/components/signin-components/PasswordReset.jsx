@@ -3,8 +3,10 @@ import { ArrowLeft, Mail } from "lucide-react";
 import { Link } from "react-router-dom";
 import { getAuth, sendPasswordResetEmail } from "firebase/auth";
 import { getFirebaseAuthErrorMessage } from "../../utils/firebaseErrorMessage";
+import useDocumentTitle from "../../hooks/useDocumentTitle";
 
 const PasswordReset = () => {
+  useDocumentTitle("Password Reset - Web2Docx");
   const [email, setEmail] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [error, setError] = useState("");

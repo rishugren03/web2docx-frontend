@@ -17,8 +17,10 @@ import { getIdToken } from "firebase/auth";
 import { auth } from "../../config/firebase";
 import { toast, ToastContainer } from "react-toastify";
 import { generateNewApiKey } from "../utils/api";
+import useDocumentTitle from "../hooks/useDocumentTitle";
 
 export default function Dashboard() {
+  useDocumentTitle("Dashboard - Web2Docx");
   const [isRotating, setIsRotating] = useState(false);
   const { userData, loadingUser } = useUserData();
   const [timeoutError, setTimeoutError] = useState(false);

@@ -8,8 +8,10 @@ import {
   Mail,
   DollarSign,
 } from "lucide-react";
+import useDocumentTitle from "../hooks/useDocumentTitle";
 
 const RefundPolicy = () => {
+  useDocumentTitle("Refund Policy - Web2Docx");
   const sections = [
     {
       icon: <DollarSign className="w-6 h-6 text-green-600" />,
