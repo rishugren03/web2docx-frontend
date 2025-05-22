@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
+import { Helmet } from "react-helmet";
 import { RocketIcon, MenuIcon, XIcon, BookOpen } from "lucide-react";
-import Navbar from "../shared/Navbar";
 import Header from "../components/home-components/Header";
 import Features from "../components/home-components/Features";
 import Pricing from "../components/home-components/Pricing";
-import Footer from "../shared/Footer";
 import CodeSamples from "../components/home-components/CodeSamples";
 import FaqSection from "../components/home-components/FaqSection";
 import EarlyAccessModal from "../components/home-components/EarlyAcessModal";
@@ -26,39 +25,79 @@ export default function HomePage() {
   }, []);
 
   return (
-    <div className="min-h-screen pt-[8vh] flex flex-col">
-      {/* Header */}
-      <section id="header">
-        <Header />
-      </section>
+    <>
+      <Helmet>
+        <title>Web2Docx – Convert HTML to PDF, DOCX, PNG via API</title>
+        <meta
+          name="description"
+          content="Web2Docx is a powerful API that converts HTML or URLs to high-quality PDF, DOCX, and PNG. Ideal for developers needing scalable document generation."
+        />
+        <meta
+          name="keywords"
+          content="HTML to PDF, HTML to DOCX, HTML to PNG, API, document conversion, Web2Docx"
+        />
+        <meta name="author" content="Web2Docx Team" />
+        <meta
+          property="og:title"
+          content="Web2Docx – Convert HTML to Documents via API"
+        />
+        <meta
+          property="og:description"
+          content="Instantly convert HTML or webpages to PDF, DOCX, or PNG using our developer-friendly API. Try Web2Docx now."
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://web2docx.com" />
+        <meta property="og:image" content="https://web2docx.com/og-image.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content="Web2Docx – HTML to PDF, DOCX, PNG API"
+        />
+        <meta
+          name="twitter:description"
+          content="Developer API to convert HTML to high-quality PDF, DOCX, and PNG documents. Fast and reliable."
+        />
+        <meta
+          name="twitter:image"
+          content="https://web2docx.com/og-image.png"
+        />
+        <link rel="canonical" href="https://web2docx.com/" />
+      </Helmet>
 
-      {/* Early access modal */}
-      <EarlyAccessModal />
+      <div className="min-h-screen pt-[8vh] flex flex-col">
+        {/* Header */}
+        <section id="header">
+          <Header />
+        </section>
 
-      {/* Code samples */}
-      <section id="code-samples">
-        <CodeSamples />
-      </section>
+        {/* Early access modal */}
+        <EarlyAccessModal />
 
-      {/* Product Hunt */}
-      <section id="product-hunt">
-        <ProductHuntEmbed />
-      </section>
+        {/* Code samples */}
+        <section id="code-samples">
+          <CodeSamples />
+        </section>
 
-      {/* Features section */}
-      <section id="features">
-        <Features />
-      </section>
+        {/* Product Hunt */}
+        <section id="product-hunt">
+          <ProductHuntEmbed />
+        </section>
 
-      {/* Pricing */}
-      <section id="pricing">
-        <Pricing />
-      </section>
+        {/* Features section */}
+        <section id="features">
+          <Features />
+        </section>
 
-      {/* FAQs */}
-      <section id="faqs">
-        <FaqSection />
-      </section>
-    </div>
+        {/* Pricing */}
+        <section id="pricing">
+          <Pricing />
+        </section>
+
+        {/* FAQs */}
+        <section id="faqs">
+          <FaqSection />
+        </section>
+      </div>
+    </>
   );
 }
