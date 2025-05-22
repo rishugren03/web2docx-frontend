@@ -12,6 +12,7 @@ import TermsOfService from "./pages/terms";
 import ProtectedRoute from "./components/ProtectedRoute";
 import RefundPolicy from "./pages/refund";
 import Blogs from "./pages/blogs";
+import { UserDataProvider } from "./context/userDataContext";
 
 const App = () => {
   return (
@@ -29,9 +30,11 @@ const App = () => {
         <Route
           path="/user/dashboard"
           element={
-            <ProtectedRoute>
-              <Dashboard />
-            </ProtectedRoute>
+            <UserDataProvider>
+              <ProtectedRoute>
+                <Dashboard />
+              </ProtectedRoute>
+            </UserDataProvider>
           }
         />
         <Route path="/user/reset-password" element={<PasswordReset />} />
