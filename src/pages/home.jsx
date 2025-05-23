@@ -71,7 +71,7 @@ export default function HomePage() {
         </section>
 
         {/* Early access modal */}
-        <EarlyAccessModal />
+        {/* <EarlyAccessModal /> */}
 
         {/* Code samples */}
         <section id="code-samples">
