@@ -1,0 +1,6 @@
+# robots.txt for web2docx.com
+
+User-agent: *
+Allow: /
+
+Sitemap: https://web2docx.com/sitemap.xml
