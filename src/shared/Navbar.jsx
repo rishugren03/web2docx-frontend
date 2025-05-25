@@ -26,7 +26,7 @@ const Navbar = () => {
     { name: "Blogs", href: "/blogs" },
     {
       name: "Documentation",
-      href: "https://www.npmjs.com/package/@web2docx/web2docx-sdk?activeTab=readme",
+      href: "https://docs.web2docx.com",
     },
     // { name: "Contact", href: "#contact" },
   ];

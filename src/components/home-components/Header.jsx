@@ -48,10 +48,7 @@ const Header = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => {
-              window.open(
-                "https://www.npmjs.com/package/@web2docx/web2docx-sdk?activeTab=readme",
-                "_blank"
-              );
+              window.open("https://docs.web2docx.com", "_blank");
             }}
             className="bg-emerald-600 text-white px-6 py-3 text-lg rounded-lg hover:bg-emerald-700 transition-all duration-300 shadow-md hover:shadow-emerald-500/20 flex items-center cursor-pointer">
             See Docs <BookOpen className="ml-2 w-5 h-5" />
