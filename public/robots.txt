@@ -3,4 +3,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://web2docx.com/sitemap.xml
+Sitemap: https://web2docx.com/sitemap-new.xml
