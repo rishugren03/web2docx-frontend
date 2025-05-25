@@ -1,6 +1,8 @@
 // generate-sitemap.js
 import { SitemapStream, streamToPromise } from "sitemap";
 import { createWriteStream } from "fs";
+import { pipeline } from "stream";
+import { promisify } from "util";
 
 const links = [
   { url: "/", changefreq: "monthly", priority: 1.0 },
@@ -10,12 +12,22 @@ const links = [
   { url: "/blogs", changefreq: "monthly", priority: 0.2 },
 ];
 
-const sitemap = new SitemapStream({ hostname: "https://web2docx.com" });
+const sitemapStream = new SitemapStream({ hostname: "https://web2docx.com" });
+const writeStream = createWriteStream("./public/sitemap.xml");
+const pipe = promisify(pipeline);
 
-streamToPromise(sitemap).then((data) => {
-  createWriteStream("./public/sitemap.xml").write(data.toString());
-  console.log("✅ Sitemap generated");
-});
+async function generateSitemap() {
+  try {
+    for (const link of links) {
+      sitemapStream.write(link);
+    }
+    sitemapStream.end();
 
-links.forEach((link) => sitemap.write(link));
-sitemap.end();
+    await pipe(sitemapStream, writeStream);
+    console.log("✅ Sitemap generated at ./public/sitemap.xml");
+  } catch (err) {
+    console.error("❌ Error generating sitemap:", err);
+  }
+}
+
+generateSitemap();
