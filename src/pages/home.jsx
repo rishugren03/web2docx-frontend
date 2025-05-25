@@ -62,6 +62,37 @@ export default function HomePage() {
           content="https://web2docx.com/og-image.png"
         />
         <link rel="canonical" href="https://web2docx.com/" />
+        <script type="application/ld+json">
+          {`
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Web2Docx",
+  "url": "https://web2docx.com",
+  "applicationCategory": "DocumentConversion",
+  "description": "Convert HTML into PDF, DOCX, or images with Web2Docx SDK. Fast, reliable, and developer-friendly.",
+  "image": "https://web2docx.com/og-image.png",
+  "author": {
+    "@type": "Organization",
+    "name": "Web2Docx"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Web2Docx",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://web2docx.com/zap.svg"
+    }
+  },
+  "operatingSystem": "All",
+  "browserRequirements": "Requires JavaScript",
+  "sameAs": [
+    "https://www.producthunt.com/posts/web2docx",
+    "https://docs.web2docx.com"
+  ]
+}
+`}
+        </script>
       </Helmet>
 
       <div className="min-h-screen pt-[8vh] flex flex-col">
