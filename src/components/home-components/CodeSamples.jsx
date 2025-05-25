@@ -13,9 +13,10 @@ async function htmlToPdfExample() {
   const html = "<h1>Hello World</h1>";
   const pdfBuffer = await client.htmlToPdf(html);
   require("fs").writeFileSync("output.pdf", pdfBuffer);
+}
 
-  htmlToPdfExample(); 
-}`,
+htmlToPdfExample();`,
+
   "HTML Batch to PDF (ZIP)": `const { Web2DocxClient } = require("@web2docx/web2docx-sdk");
 
 const client = new Web2DocxClient("YOUR_API_KEY");
@@ -24,9 +25,10 @@ async function htmlBatchToPdfExample() {
   const htmlList = ["<h1>First</h1>", "<h1>Second</h1>"];
   const zipBuffer = await client.htmlBatchToPdf(htmlList);
   require("fs").writeFileSync("batch-output.zip", zipBuffer);
+}
 
-  htmlBatchToPdfExample();
-}`,
+htmlBatchToPdfExample();`,
+
   "HTML to Image": `const { Web2DocxClient } = require("@web2docx/web2docx-sdk");
 
 const client = new Web2DocxClient("YOUR_API_KEY");
@@ -35,9 +37,10 @@ async function htmlToImageExample() {
   const html = "<h1>Hello Image</h1>";
   const imageBuffer = await client.htmlToImage(html);
   require("fs").writeFileSync("output.png", imageBuffer);
+}
 
-  htmlToImageExample();
-}`,
+htmlToImageExample();`,
+
   "HTML Batch to Image (ZIP)": `const { Web2DocxClient } = require("@web2docx/web2docx-sdk");
 
 const client = new Web2DocxClient("YOUR_API_KEY");
@@ -46,9 +49,10 @@ async function htmlBatchToImageExample() {
   const htmlList = ["<h1>First</h1>", "<h1>Second</h1>"];
   const zipBuffer = await client.htmlBatchToImage(htmlList);
   require("fs").writeFileSync("batch-output.zip", zipBuffer);
+}
 
-  htmlBatchToImageExample()
-}`,
+htmlBatchToImageExample();`,
+
   "HTML to Docx": `const { Web2DocxClient } = require("@web2docx/web2docx-sdk");
 
 const client = new Web2DocxClient("YOUR_API_KEY");
@@ -57,9 +61,10 @@ async function htmlToDocxExample() {
   const html = "<h1>Hello Docx</h1>";
   const docxBuffer = await client.htmlToDocx(html);
   require("fs").writeFileSync("output.docx", docxBuffer);
+}
 
-  htmlToDocxExample();
-}`,
+htmlToDocxExample();`,
+
   "HTML Batch to Docx (ZIP)": `const { Web2DocxClient } = require("@web2docx/web2docx-sdk");
 
 const client = new Web2DocxClient("YOUR_API_KEY");
@@ -68,9 +73,9 @@ async function htmlBatchToDocxExample() {
   const htmlList = ["<h1>First</h1>", "<h1>Second</h1>"];
   const zipBuffer = await client.htmlBatchToDocx(htmlList);
   require("fs").writeFileSync("batch-output.zip", zipBuffer);
+}
 
-  htmlBatchToDocxExample()
-}`,
+htmlBatchToDocxExample();`,
 };
 
 const tabs = Object.keys(codeSamples);
