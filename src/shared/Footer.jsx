@@ -32,6 +32,10 @@ const Footer = () => {
     ],
     misc: [
       {
+        name: "npmjs",
+        url: "https://www.npmjs.com/package/@web2docx/web2docx-sdk?activeTab=readme",
+      },
+      {
         name: "Status",
         url: "https://stats.uptimerobot.com/VboavQHUq8",
       },
