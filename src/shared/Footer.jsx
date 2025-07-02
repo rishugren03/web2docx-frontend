@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Github, Linkedin, Mail } from "lucide-react";
+import { Github, Linkedin, Mail, Twitter } from "lucide-react";
 
 const Footer = () => {
   const socialLinks = [
@@ -18,6 +18,11 @@ const Footer = () => {
       icon: <Mail className="w-5 h-5" />,
       url: "mailto:support@web2docx.com",
       name: "Email",
+    },
+    {
+      icon: <Twitter className="w-5 h-5" />,
+      url: "https://x.com/web2docx",
+      name: Twitter,
     },
   ];
 
