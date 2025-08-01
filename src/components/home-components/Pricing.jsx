@@ -26,7 +26,7 @@ const Pricing = () => {
     },
     {
       name: "Pro",
-      price: "$29",
+      price: "$19",
       priceId: "pri_01jv23vxf0s2k188r288c6sfb9",
       // priceId: "pri_01jv8g6mbwy6f6p2gws521yd1r", //test
       description: "For small businesses and startups",
@@ -44,7 +44,7 @@ const Pricing = () => {
     },
     {
       name: "Pro Max",
-      price: "$69",
+      price: "$49",
       priceId: "pri_01jv241sew7he6zn97bw3y3w96",
       // priceId: "pri_01jv8g6mbwy6f6p2gws521yd1r", //test
       description: "For teams and enterprises needing unlimited usage",
@@ -105,14 +105,16 @@ const Pricing = () => {
   return (
     <section
       id="pricing"
-      className="py-20 px-6 bg-gradient-to-b from-indigo-50 to-white">
+      className="py-20 px-6 bg-gradient-to-b from-indigo-50 to-white"
+    >
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-16 px-4">
+          className="text-center mb-16 px-4"
+        >
           <h2 className="text-4xl font-bold text-gray-900 mb-4">
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-600">
               Simple, Transparent Pricing
@@ -136,7 +138,8 @@ const Pricing = () => {
                 plan.popular
                   ? "border-2 border-indigo-500 shadow-xl"
                   : "border border-gray-100 shadow-md"
-              } bg-white rounded-2xl overflow-hidden`}>
+              } bg-white rounded-2xl overflow-hidden`}
+            >
               {plan.popular && (
                 <div className="absolute top-0 right-0 bg-gradient-to-r from-indigo-600 to-purple-600 text-white text-xs font-bold px-4 py-1 rounded-bl-lg">
                   MOST POPULAR
@@ -179,7 +182,8 @@ const Pricing = () => {
                   {plan.features.map((feature, i) => (
                     <li
                       key={i}
-                      className="flex items-start gap-2 text-gray-600">
+                      className="flex items-start gap-2 text-gray-600"
+                    >
                       <Check className="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5" />
                       <span>{feature}</span>
                     </li>
@@ -198,7 +202,8 @@ const Pricing = () => {
                     plan.popular
                       ? "bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-lg hover:shadow-indigo-500/30"
                       : "bg-indigo-50 text-indigo-600 hover:bg-indigo-100"
-                  }`}>
+                  }`}
+                >
                   {plan.cta}
                 </motion.button>
               </div>
