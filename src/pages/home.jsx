@@ -110,9 +110,9 @@ export default function HomePage() {
         </section>
 
         {/* Product Hunt */}
-        <section id="product-hunt">
+        {/* <section id="product-hunt">
           <ProductHuntEmbed />
-        </section>
+        </section> */}
 
         {/* Features section */}
         <section id="features">

@@ -18,12 +18,6 @@ const App = () => {
   return (
     <>
       <Navbar />
-      <a
-        href="https://www.producthunt.com/products/web2docx/reviews/new"
-        target="_blank"
-        className="fixed bottom-6 right-6 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-full shadow-md text-sm z-40">
-        💬 Share Feedback
-      </a>
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/signin" element={<SignInPage />} />
