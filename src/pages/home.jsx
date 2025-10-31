@@ -6,6 +6,7 @@ import Features from "../components/home-components/Features";
 import Pricing from "../components/home-components/Pricing";
 import CodeSamples from "../components/home-components/CodeSamples";
 import FaqSection from "../components/home-components/FaqSection";
+import CommunitySection from "../components/home-components/CommunitySection";
 import EarlyAccessModal from "../components/home-components/EarlyAcessModal";
 import ProductHuntEmbed from "../components/productHunt";
 import useDocumentTitle from "../hooks/useDocumentTitle";
@@ -127,6 +128,11 @@ export default function HomePage() {
         {/* FAQs */}
         <section id="faqs">
           <FaqSection />
+        </section>
+
+        {/* Community Section */}
+        <section id="community">
+          <CommunitySection />
         </section>
       </div>
     </>
