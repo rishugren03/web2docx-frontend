@@ -12,6 +12,7 @@ import TermsOfService from "./pages/terms";
 import ProtectedRoute from "./components/ProtectedRoute";
 import RefundPolicy from "./pages/refund";
 import Blogs from "./pages/blogs";
+import BlogPost from "./pages/BlogPost";
 import { UserDataProvider } from "./context/userDataContext";
 
 const App = () => {
@@ -36,6 +37,7 @@ const App = () => {
         <Route path="/terms" element={<TermsOfService />} />
         <Route path="/refund-policy" element={<RefundPolicy />} />
         <Route path="/blogs" element={<Blogs />} />
+        <Route path="/blog/:slug" element={<BlogPost />} />
       </Routes>
       <Footer />
     </>
