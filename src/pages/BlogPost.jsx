@@ -1,7 +1,14 @@
 import React from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
-import { ArrowLeft, Calendar, Clock, Tag } from "lucide-react";
+import {
+  ArrowLeft,
+  Calendar,
+  Clock,
+  Tag,
+  ArrowRight,
+  BookOpen,
+} from "lucide-react";
 import { blogPosts } from "../data/blogPosts";
 import ReactMarkdown from "react-markdown";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
@@ -289,32 +296,84 @@ const BlogPost = () => {
 
           {/* Related Posts */}
           {relatedPosts.length > 0 && (
-            <div className="mt-16">
-              <h2 className="text-3xl font-bold text-gray-900 mb-8">
-                Related Posts
-              </h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+            <div className="mt-20 pt-12 border-t border-gray-200">
+              <div className="flex items-center gap-3 mb-10">
+                <div className="p-2 bg-indigo-100 rounded-lg">
+                  <BookOpen className="w-6 h-6 text-indigo-600" />
+                </div>
+                <div>
+                  <h2 className="text-3xl font-bold text-gray-900">
+                    Related Articles
+                  </h2>
+                  <p className="text-gray-600 mt-1">
+                    Continue reading with these related posts
+                  </p>
+                </div>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {relatedPosts.map((relatedPost) => (
                   <Link
                     key={relatedPost.id}
                     to={`/blog/${relatedPost.slug}`}
-                    className="bg-white rounded-lg shadow-sm hover:shadow-md transition p-6 border border-gray-100 flex flex-col"
+                    className="group bg-white rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 overflow-hidden hover:-translate-y-1 flex flex-col"
                   >
-                    <span className="inline-block px-2 py-1 bg-indigo-100 text-indigo-700 rounded text-xs font-semibold mb-3 self-start">
-                      {relatedPost.category}
-                    </span>
-                    <h3 className="text-lg font-semibold text-gray-900 mb-2 line-clamp-2 flex-grow">
-                      {relatedPost.title}
-                    </h3>
-                    <p className="text-gray-600 text-sm line-clamp-2 mb-4">
-                      {relatedPost.excerpt}
-                    </p>
-                    <div className="flex items-center text-sm text-gray-500 mt-auto">
-                      <Clock className="w-4 h-4 mr-1" />
-                      {relatedPost.readTime}
+                    {/* Content */}
+                    <div className="p-6 flex flex-col flex-grow">
+                      {/* Category Badge */}
+                      <span className="inline-block px-3 py-1.5 bg-indigo-100 text-indigo-700 rounded-full text-xs font-semibold mb-4 self-start">
+                        {relatedPost.category}
+                      </span>
+
+                      {/* Title */}
+                      <h3 className="text-xl font-bold text-gray-900 mb-3 line-clamp-2 group-hover:text-indigo-600 transition-colors flex-grow">
+                        {relatedPost.title}
+                      </h3>
+
+                      {/* Excerpt */}
+                      <p className="text-gray-600 text-sm line-clamp-3 mb-4 leading-relaxed">
+                        {relatedPost.excerpt}
+                      </p>
+
+                      {/* Tags */}
+                      {relatedPost.tags.length > 0 && (
+                        <div className="flex flex-wrap gap-2 mb-4">
+                          {relatedPost.tags.slice(0, 2).map((tag) => (
+                            <span
+                              key={tag}
+                              className="inline-flex items-center px-2 py-1 bg-gray-100 text-gray-600 rounded-md text-xs"
+                            >
+                              <Tag className="w-3 h-3 mr-1" />
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                      )}
+
+                      {/* Footer */}
+                      <div className="flex items-center justify-between pt-4 border-t border-gray-100 mt-auto">
+                        <div className="flex items-center gap-2 text-sm text-gray-500">
+                          <Clock className="w-4 h-4" />
+                          <span>{relatedPost.readTime}</span>
+                        </div>
+                        <div className="flex items-center gap-1 text-indigo-600 text-sm font-medium group-hover:gap-2 transition-all">
+                          <span>Read more</span>
+                          <ArrowRight className="w-4 h-4" />
+                        </div>
+                      </div>
                     </div>
                   </Link>
                 ))}
+              </div>
+
+              {/* View All Link */}
+              <div className="mt-12 text-center">
+                <Link
+                  to="/blogs"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-indigo-600 text-white font-semibold rounded-lg hover:bg-indigo-700 transition shadow-md hover:shadow-lg"
+                >
+                  <span>View All Blog Posts</span>
+                  <ArrowRight className="w-5 h-5" />
+                </Link>
               </div>
             </div>
           )}
